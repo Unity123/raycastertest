@@ -19,7 +19,7 @@ var gridheight = 32;
 
 var fov = 120;
 
-var angle_transform = 360/512;
+var angle_transform = Math.PI/256;
 
 function render_frame() {
     var canvas = $("#render")[0];
