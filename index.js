@@ -24,15 +24,15 @@ var angle_transform = Math.PI/256;
 function render_frame() {
     var canvas = $("#render")[0];
     var ctx = canvas.getContext("2d");
+
+    ctx.clearRect(0, 0, 240, 160);
+    ctx.strokeStyle = "red";
     
     for (var i = -fov/2; i < fov/2; i++) {
         var angle = playerangle + i;
         var dist = get_hit_distance(angle);
         console.log(dist);
         var height = 4096 / dist;
-        ctx.fillStyle = "black";
-        ctx.clearRect(0, 0, 240, 160);
-        ctx.strokeStyle = "red";
         ctx.moveTo(fov/2 + (i * 2), 80 - height/2);
         ctx.lineTo(fov/2 + (i * 2), 80 + height/2);
         ctx.stroke();
