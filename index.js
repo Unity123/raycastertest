@@ -9,8 +9,8 @@ var map = [
     1, 1, 1, 1, 1, 1, 1, 1
 ];
 
-var playerx = 64;
-var playery = 64;
+var playerx = 32;
+var playery = 32;
 var playerxdelta = 0;
 var playerydelta = 0;
 var playerangle = 0;
@@ -43,9 +43,9 @@ function render_frame() {
         ctx.moveTo(fov/2 + (i * 2), 80 - height/2);
         ctx.lineTo(fov/2 + (i * 2), 80 + height/2);
         ctx.stroke();
-        ctx.moveTo(fov/2 + (i * 2) + 1, 80 - height/2);
-        ctx.lineTo(fov/2 + (i * 2) + 1, 80 + height/2);
-        ctx.stroke();
+        //ctx.moveTo(fov/2 + (i * 2) + 1, 80 - height/2);
+        //ctx.lineTo(fov/2 + (i * 2) + 1, 80 + height/2);
+        //ctx.stroke();
     }
 }
 
