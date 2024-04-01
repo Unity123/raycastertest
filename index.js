@@ -31,7 +31,7 @@ function render_frame() {
         console.log(dist);
         var height = 4096 / dist;
         ctx.fillStyle = "black";
-        ctx.fillRect(0, 0, 240, 160);
+        ctx.clearRect(0, 0, 240, 160);
         ctx.strokeStyle = "red";
         ctx.moveTo(fov/2 + (i * 2), 80 - height/2);
         ctx.lineTo(fov/2 + (i * 2), 80 + height/2);
