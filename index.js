@@ -25,7 +25,7 @@ function render_frame() {
     var canvas = $("#render")[0];
     var ctx = canvas.getContext("2d");
 
-    ctx.clearRect(0, 0, 240, 160);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.strokeStyle = "red";
     
     for (var i = -fov/2; i < fov/2; i++) {
