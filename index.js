@@ -47,7 +47,6 @@ function render_frame() {
         ctx.lineTo(fov/2 + (i * 2) + 1, 80 + height/2);
         ctx.stroke();
     }
-    requestAnimationFrame(render_frame);
 }
 
 function get_hit_distance(angle) {
@@ -99,7 +98,7 @@ function distance(x1, x2, a, b) {
     return (Math.abs(x1 - x2) / Math.cos(a * angle_transform)) * Math.cos(b * angle_transform);
 }
 
-render_frame();
+setInterval(render_frame, 17);
 $(document).keydown(function (event) {
     if (event.which == 38) {
         playerxdelta = Math.sin(playerangle * angle_transform);
