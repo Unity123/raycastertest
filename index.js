@@ -27,7 +27,7 @@ var angle_transform = Math.PI/256;
 function render_frame() {
     playerx += playerxdelta;
     playery += playerydelta;
-    playerangle += playerangledata;
+    playerangle += playerangledelta;
     
     var canvas = $("#render")[0];
     var ctx = canvas.getContext("2d");
