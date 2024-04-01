@@ -31,14 +31,14 @@ function render_frame() {
     
     var canvas = $("#render")[0];
     var ctx = canvas.getContext("2d");
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.strokeStyle = "red";
     
     for (var i = -fov/2; i < fov/2; i++) {
         var angle = playerangle + i;
         var dist = get_hit_distance(angle);
-        console.log(dist);
+        //console.log(dist);
         var height = 4096 / dist;
         ctx.moveTo(fov/2 + (i * 2), 80 - height/2);
         ctx.lineTo(fov/2 + (i * 2), 80 + height/2);
