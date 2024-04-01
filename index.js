@@ -29,11 +29,14 @@ function render_frame() {
         var angle = playerangle + i;
         var dist = get_hit_distance(angle);
         var height = 4096 / dist;
-        ctx.moveTo(fov/2 + i, 80 - height/2);
-        ctx.lineTo(fov/2 + i, 80 + height/2);
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, 240, 160);
+        ctx.strokeStyle = "red";
+        ctx.moveTo(fov/2 + (i * 2), 80 - height/2);
+        ctx.lineTo(fov/2 + (i * 2), 80 + height/2);
         ctx.stroke();
-        ctx.moveTo(fov/2 + i + 1, 80 - height/2);
-        ctx.lineTo(fov/2 + i + 1, 80 + height/2);
+        ctx.moveTo(fov/2 + (i * 2) + 1, 80 - height/2);
+        ctx.lineTo(fov/2 + (i * 2) + 1, 80 + height/2);
         ctx.stroke();
     }
 }
@@ -88,3 +91,19 @@ function distance(x1, x2, a, b) {
 }
 
 window.setInterval(render_frame, 17);
+$(document).keydown(function (event) {
+    if (event.which == 38) {
+        playerx += Math.sin(playerangle * angle_transform);
+        playery += Math.cos(playerangle * angle_transform);
+    }
+    if (event.which == 40) {
+        playerx -= Math.sin(playerangle * angle_transform);
+        playery -= Math.cos(playerangle * angle_transform);
+    }
+    if (event.which == 37) {
+        playerangle -= 16;
+    }
+    if (event.which == 39) {
+        playerangle += 16;
+    }
+});
