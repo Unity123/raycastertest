@@ -22,7 +22,7 @@ var fov = 120;
 var angle_transform = 360/512;
 
 function render_frame() {
-    var canvas = $("#render")[0];
+    var canvas = $("#render");
     var ctx = canvas.getContext("2d");
     
     for (var i = -fov/2; i < fov/2; i++) {
