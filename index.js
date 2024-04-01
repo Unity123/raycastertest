@@ -86,3 +86,5 @@ function get_y_distance(angle) {
 function distance(x1, x2, a, b) {
     return (Math.abs(x1 - x2) / Math.cos(a)) * Math.cos(b);
 }
+
+window.setInterval(render_frame, 17);
