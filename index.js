@@ -43,9 +43,6 @@ function render_frame() {
         ctx.moveTo(fov/2 + (i * 2), 80 - height/2);
         ctx.lineTo(fov/2 + (i * 2), 80 + height/2);
         ctx.stroke();
-        //ctx.moveTo(fov/2 + (i * 2) + 1, 80 - height/2);
-        //ctx.lineTo(fov/2 + (i * 2) + 1, 80 + height/2);
-        //ctx.stroke();
     }
 }
 
