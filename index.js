@@ -22,12 +22,13 @@ var fov = 120;
 var angle_transform = 360/512;
 
 function render_frame() {
-    var canvas = $("#render");
+    var canvas = $("#render")[0];
     var ctx = canvas.getContext("2d");
     
     for (var i = -fov/2; i < fov/2; i++) {
         var angle = playerangle + i;
         var dist = get_hit_distance(angle);
+        console.log(dist);
         var height = 4096 / dist;
         ctx.fillStyle = "black";
         ctx.fillRect(0, 0, 240, 160);
@@ -90,7 +91,7 @@ function distance(x1, x2, a, b) {
     return (Math.abs(x1 - x2) / Math.cos(a * angle_transform)) * Math.cos(b * angle_transform);
 }
 
-window.setInterval(render_frame, 17);
+window.setInterval(render_frame, 1000);//17);
 $(document).keydown(function (event) {
     if (event.which == 38) {
         playerx += Math.sin(playerangle * angle_transform);
