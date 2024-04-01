@@ -91,7 +91,7 @@ function distance(x1, x2, a, b) {
     return (Math.abs(x1 - x2) / Math.cos(a * angle_transform)) * Math.cos(b * angle_transform);
 }
 
-window.setInterval(render_frame, 1000);//17);
+window.setInterval(render_frame, 17);
 $(document).keydown(function (event) {
     if (event.which == 38) {
         playerx += Math.sin(playerangle * angle_transform);
