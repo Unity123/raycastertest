@@ -48,7 +48,7 @@ function get_hit_distance(angle) {
 function get_x_distance(angle) {
     var x, y;
     var dx, dy;
-    if (angle > 256) {
+    if (angle % 512 > 256) {
         y = Math.floor(playery / gridsize) * gridsize - 1;
         dy = -gridsize;
     } else {
@@ -67,12 +67,12 @@ function get_x_distance(angle) {
 function get_y_distance(angle) {
     var x, y;
     var dx, dy;
-    if (angle > 128 && angle < 384) {
-        x = Math.floor(playerx / gridsize) * gridsize - 1;
-        dx = -gridsize;
-    } else {
+    if (angle % 512 > 128 && angle % 512 < 384) {
         x = Math.floor(playerx / gridsize) * gridsize + gridsize;
         dx = gridsize;
+    } else {
+        x = Math.floor(playerx / gridsize) * gridsize - 1;
+        dx = -gridsize;
     }
     y = playery + (playerx - x) * Math.tan(angle * angle_transform);
     dy = gridsize * Math.tan(angle * angle_transform);
