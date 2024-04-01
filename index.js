@@ -11,7 +11,10 @@ var map = [
 
 var playerx = 64;
 var playery = 64;
+var playerxdelta = 0;
+var playerydelta = 0;
 var playerangle = 0;
+var playerangledelta = 0;
 var playerheight = 16;
 
 var gridsize = 16;
@@ -22,6 +25,10 @@ var fov = 120;
 var angle_transform = Math.PI/256;
 
 function render_frame() {
+    playerx += playerxdelta;
+    playery += playerydelta;
+    playerangle += playerangledata;
+    
     var canvas = $("#render")[0];
     var ctx = canvas.getContext("2d");
 
@@ -40,6 +47,7 @@ function render_frame() {
         ctx.lineTo(fov/2 + (i * 2) + 1, 80 + height/2);
         ctx.stroke();
     }
+    requestAnimationFrame(render_frame);
 }
 
 function get_hit_distance(angle) {
@@ -91,20 +99,36 @@ function distance(x1, x2, a, b) {
     return (Math.abs(x1 - x2) / Math.cos(a * angle_transform)) * Math.cos(b * angle_transform);
 }
 
-window.setInterval(render_frame, 17);
+render_frame();
 $(document).keydown(function (event) {
     if (event.which == 38) {
-        playerx += Math.sin(playerangle * angle_transform);
-        playery += Math.cos(playerangle * angle_transform);
+        playerxdelta = Math.sin(playerangle * angle_transform);
+        playerydelta = -Math.cos(playerangle * angle_transform);
     }
     if (event.which == 40) {
-        playerx -= Math.sin(playerangle * angle_transform);
-        playery -= Math.cos(playerangle * angle_transform);
+        playerxdelta = -Math.sin(playerangle * angle_transform);
+        playerydelta = Math.cos(playerangle * angle_transform);
     }
     if (event.which == 37) {
-        playerangle -= 16;
+        playerangledelta = -1;
     }
     if (event.which == 39) {
-        playerangle += 16;
+        playerangledelta = 1;
+    }
+});
+$(document).keyup(function (event) {
+    if (event.which == 38) {
+        playerxdelta = 0;
+        playerydelta = 0;
+    }
+    if (event.which == 40) {
+        playerxdelta = 0;
+        playerydelta = 0;
+    }
+    if (event.which == 37) {
+        playerangledelta = 0;
+    }
+    if (event.which == 39) {
+        playerangledelta = 0;
     }
 });
